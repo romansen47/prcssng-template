@@ -89,7 +89,7 @@ public class Gui extends GuiTemplate {
      * implementation of clicked() function:
      *
      * @return
-     * 
+     *
      * 	returns 0 if nothing clicked or mouse still pressed returns 1 if
      *         mouse button clicked and held shorter than 20% of framerate returns 2
      *         if mouse button clicked and held longer than 20% of framerate
@@ -98,8 +98,8 @@ public class Gui extends GuiTemplate {
     public int clicked() {
 	if (this.mousePressed) {
 	    if (this.framesPressed == 0) {
-		this.pressedPos[0] = this.mouseY;
-		this.pressedPos[1] = this.mouseX;
+		Gui.pressedPos[0] = this.mouseY;
+		Gui.pressedPos[1] = this.mouseX;
 	    }
 	    this.framesPressed += 1;
 	    return 0;
@@ -125,7 +125,7 @@ public class Gui extends GuiTemplate {
      * implementation of clicked() function:
      *
      * @return
-     * 
+     *
      * 	returns 0 if nothing clicked or mouse still pressed returns 1 if
      *         mouse button clicked and held shorter than 20% of framerate returns 2
      *         if mouse button clicked and held longer than 20% of framerate
@@ -151,15 +151,15 @@ public class Gui extends GuiTemplate {
     /**
      * @param event: is 1.0 or -1.0 depending on direction of mouse wheel event (up
      *        or down)
-     * 
+     *
      */
 
     @Override
     public void mouseWheel(final MouseEvent event) {
 	/**
-	 * 
+	 *
 	 * float e = event.getCount();
-	 * 
+	 *
 	 * e = 1.0 for "UP" e 0 -1.0 for "DOWN"
 	 */
     }

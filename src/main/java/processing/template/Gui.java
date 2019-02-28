@@ -52,7 +52,9 @@ public class Gui extends GuiTemplate {
     @Override
     public void settings() {
 	this.fullScreen();
-	// size(x,y);
+	/**
+	 *  Alternatively e.g. size(x,y);
+	 */
     }
 
     /*
@@ -71,6 +73,9 @@ public class Gui extends GuiTemplate {
 
     @Override
     public void draw() {
+	/**
+	 * to be customized
+	 */
     }
 
     /**
@@ -83,7 +88,7 @@ public class Gui extends GuiTemplate {
      * Position of mouse when button has been pressed
      */
 
-    public static int[] pressedPos = new int[2];
+    private static int[] pressedPos = new int[2];
 
     /**
      * implementation of clicked() function:
@@ -98,8 +103,8 @@ public class Gui extends GuiTemplate {
     public int clicked() {
 	if (this.mousePressed) {
 	    if (this.framesPressed == 0) {
-		Gui.pressedPos[0] = this.mouseY;
-		Gui.pressedPos[1] = this.mouseX;
+		Gui.getPressedPos()[0] = this.mouseY;
+		Gui.getPressedPos()[1] = this.mouseX;
 	    }
 	    this.framesPressed += 1;
 	    return 0;
@@ -162,5 +167,13 @@ public class Gui extends GuiTemplate {
 	 *
 	 * e = 1.0 for "UP" e 0 -1.0 for "DOWN"
 	 */
+    }
+
+    public static int[] getPressedPos() {
+	return pressedPos;
+    }
+
+    public static void setPressedPos(int[] pressedPos) {
+	Gui.pressedPos = pressedPos;
     }
 }

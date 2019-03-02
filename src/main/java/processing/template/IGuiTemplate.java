@@ -12,6 +12,9 @@ public interface IGuiTemplate {
 
     /**
      * This method starts the gui
+     * 
+     * @param mainclass the fqn
+     * @return true
      */
 
     public abstract boolean run(String mainclass);

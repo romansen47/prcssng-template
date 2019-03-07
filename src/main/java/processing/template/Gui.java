@@ -18,16 +18,42 @@ import processing.event.MouseEvent;
 public class Gui extends GuiTemplate {
 
     /**
+     * Position of mouse when button has been pressed
+     */
+
+    private static int[] pressedPos = new int[2];
+
+    public static int[] getPressedPos() {
+	return Gui.pressedPos;
+    }
+
+    public static void setPressedPos(int[] pressedPos) {
+	Gui.pressedPos = pressedPos;
+    }
+
+    /*
+     * Overrides parent abstract run function
+     */
+
+    /**
      * Creates the final instance Dimension-object screenSize
      */
 
     public final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+    /*
+     * Overrides parent abstract settings function
+     */
 
     /**
      * Width of the screen (not just the sketch)
      */
 
     public final int Width = (int) this.screenSize.getWidth();
+
+    /*
+     * Overrides parent abstract setup function
+     */
 
     /**
      * Height of the screen (not just the sketch)
@@ -36,47 +62,8 @@ public class Gui extends GuiTemplate {
     public final int Height = (int) this.screenSize.getHeight();
 
     /*
-     * Overrides parent abstract run function
-     */
-
-    @Override
-    public boolean run(final String mainclass) {
-	PApplet.main(new String[] { "--present", mainclass });
-	return true;
-    }
-
-    /*
-     * Overrides parent abstract settings function
-     */
-
-    @Override
-    public void settings() {
-	this.fullScreen();
-	/**
-	 *  Alternatively e.g. size(x,y);
-	 */
-    }
-
-    /*
-     * Overrides parent abstract setup function
-     */
-
-    @Override
-    public void setup() {
-	this.frameRate(10);
-	this.background(0);
-    }
-
-    /*
      * Overrides parent abstract draw function
      */
-
-    @Override
-    public void draw() {
-	/**
-	 * to be customized
-	 */
-    }
 
     /**
      * Counts frames pressed while mouse button is pressed
@@ -85,10 +72,9 @@ public class Gui extends GuiTemplate {
     protected int framesPressed;
 
     /**
-     * Position of mouse when button has been pressed
+     * Counts frames pressed while key button is pressed
      */
-
-    private static int[] pressedPos = new int[2];
+    protected int framesKeyPressed;
 
     /**
      * implementation of clicked() function:
@@ -121,10 +107,28 @@ public class Gui extends GuiTemplate {
 	}
     }
 
+    @Override
+    public void draw() {
+	/**
+	 * to be customized
+	 */
+    }
+
     /**
-     * Counts frames pressed while key button is pressed
+     * @param event: is 1.0 or -1.0 depending on direction of mouse wheel event (up
+     *        or down)
+     *
      */
-    protected int framesKeyPressed;
+
+    @Override
+    public void mouseWheel(final MouseEvent event) {
+	/**
+	 *
+	 * float e = event.getCount();
+	 *
+	 * e = 1.0 for "UP" e 0 -1.0 for "DOWN"
+	 */
+    }
 
     /**
      * implementation of clicked() function:
@@ -153,27 +157,23 @@ public class Gui extends GuiTemplate {
 	}
     }
 
-    /**
-     * @param event: is 1.0 or -1.0 depending on direction of mouse wheel event (up
-     *        or down)
-     *
-     */
+    @Override
+    public boolean run(final String mainclass) {
+	PApplet.main(new String[] { "--present", mainclass });
+	return true;
+    }
 
     @Override
-    public void mouseWheel(final MouseEvent event) {
+    public void settings() {
+	this.fullScreen();
 	/**
-	 *
-	 * float e = event.getCount();
-	 *
-	 * e = 1.0 for "UP" e 0 -1.0 for "DOWN"
+	 * Alternatively e.g. size(x,y);
 	 */
     }
 
-    public static int[] getPressedPos() {
-	return pressedPos;
-    }
-
-    public static void setPressedPos(int[] pressedPos) {
-	Gui.pressedPos = pressedPos;
+    @Override
+    public void setup() {
+	this.frameRate(10);
+	this.background(0);
     }
 }

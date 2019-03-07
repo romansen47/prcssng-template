@@ -11,30 +11,30 @@ package processing.template;
 public interface IGuiTemplate {
 
     /**
+     * The draw function from processing framework
+     */
+
+    void draw();
+
+    /**
      * This method starts the gui
      * 
      * @param mainclass the fqn
      * @return true
      */
 
-    public abstract boolean run(String mainclass);
+    boolean run(String mainclass);
 
     /**
      * The settings function from processing framework
      */
 
-    public abstract void settings();
+    void settings();
 
     /**
      * The setup function from processing framework
      */
 
-    public abstract void setup();
-
-    /**
-     * The draw function from processing framework
-     */
-
-    public abstract void draw();
+    void setup();
 
 }

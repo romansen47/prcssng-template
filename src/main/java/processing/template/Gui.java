@@ -31,29 +31,20 @@ public class Gui extends GuiTemplate {
 	Gui.pressedPos = pressedPos;
     }
 
-    /*
-     * Overrides parent abstract run function
+    /**
+     * Counts frames pressed while key button is pressed
      */
+    protected int framesKeyPressed;
+
+    /**
+     * Counts frames pressed while mouse button is pressed
+     */
+    protected int framesPressed;
 
     /**
      * Creates the final instance Dimension-object screenSize
      */
-
     public final Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-    /*
-     * Overrides parent abstract settings function
-     */
-
-    /**
-     * Width of the screen (not just the sketch)
-     */
-
-    public final int Width = (int) this.screenSize.getWidth();
-
-    /*
-     * Overrides parent abstract setup function
-     */
 
     /**
      * Height of the screen (not just the sketch)
@@ -61,20 +52,10 @@ public class Gui extends GuiTemplate {
 
     public final int Height = (int) this.screenSize.getHeight();
 
-    /*
-     * Overrides parent abstract draw function
-     */
-
     /**
-     * Counts frames pressed while mouse button is pressed
+     * Width of the screen (not just the sketch)
      */
-
-    protected int framesPressed;
-
-    /**
-     * Counts frames pressed while key button is pressed
-     */
-    protected int framesKeyPressed;
+    public final int Width = (int) this.screenSize.getWidth();
 
     /**
      * implementation of clicked() function:
@@ -85,7 +66,6 @@ public class Gui extends GuiTemplate {
      *         mouse button clicked and held shorter than 20% of framerate returns 2
      *         if mouse button clicked and held longer than 20% of framerate
      */
-
     public int clicked() {
 	if (this.mousePressed) {
 	    if (this.framesPressed == 0) {
@@ -107,6 +87,9 @@ public class Gui extends GuiTemplate {
 	}
     }
 
+    /*
+     * Overrides parent abstract draw function
+     */
     @Override
     public void draw() {
 	/**
@@ -119,14 +102,13 @@ public class Gui extends GuiTemplate {
      *        or down)
      *
      */
-
     @Override
     public void mouseWheel(final MouseEvent event) {
 	/**
 	 *
 	 * float e = event.getCount();
 	 *
-	 * e = 1.0 for "UP" e 0 -1.0 for "DOWN"
+	 * e = 1.0 for "UP" e = -1.0 for "DOWN"
 	 */
     }
 
@@ -157,12 +139,18 @@ public class Gui extends GuiTemplate {
 	}
     }
 
+    /**
+     * Overrides parent abstract run function
+     */
     @Override
     public boolean run(final String mainclass) {
 	PApplet.main(new String[] { "--present", mainclass });
 	return true;
     }
 
+    /**
+     * Overrides parent abstract settings function
+     */
     @Override
     public void settings() {
 	this.fullScreen();
@@ -171,6 +159,9 @@ public class Gui extends GuiTemplate {
 	 */
     }
 
+    /**
+     * Overrides parent abstract setup function
+     */
     @Override
     public void setup() {
 	this.frameRate(10);

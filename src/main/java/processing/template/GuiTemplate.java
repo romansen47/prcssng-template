@@ -20,5 +20,4 @@ import processing.core.PApplet;
  */
 
 public abstract class GuiTemplate extends PApplet implements IGuiTemplate {
-
 }

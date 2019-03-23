@@ -50,12 +50,12 @@ public class Gui extends GuiTemplate {
      * Height of the screen (not just the sketch)
      */
 
-    public final int Height = (int) this.screenSize.getHeight();
+    public final int Height = (int) screenSize.getHeight();
 
     /**
      * Width of the screen (not just the sketch)
      */
-    public final int Width = (int) this.screenSize.getWidth();
+    public final int Width = (int) screenSize.getWidth();
 
     /**
      * implementation of clicked() function:
@@ -67,22 +67,22 @@ public class Gui extends GuiTemplate {
      *         if mouse button clicked and held longer than 20% of framerate
      */
     public int clicked() {
-	if (this.mousePressed) {
-	    if (this.framesPressed == 0) {
-		Gui.getPressedPos()[0] = this.mouseY;
-		Gui.getPressedPos()[1] = this.mouseX;
+	if (mousePressed) {
+	    if (framesPressed == 0) {
+		Gui.getPressedPos()[0] = mouseY;
+		Gui.getPressedPos()[1] = mouseX;
 	    }
-	    this.framesPressed += 1;
+	    framesPressed += 1;
 	    return 0;
 	} else {
-	    if (this.framesPressed == 0) {
+	    if (framesPressed == 0) {
 		return 0;
 	    }
-	    if (this.framesPressed < 0.5 * this.frameRate) {
-		this.framesPressed = 0;
+	    if (framesPressed < 0.5 * frameRate) {
+		framesPressed = 0;
 		return 1;
 	    }
-	    this.framesPressed = 0;
+	    framesPressed = 0;
 	    return 2;
 	}
     }
@@ -123,18 +123,18 @@ public class Gui extends GuiTemplate {
      */
 
     public int pressed() {
-	if (this.keyPressed) {
-	    this.framesKeyPressed += 1;
+	if (keyPressed) {
+	    framesKeyPressed += 1;
 	    return 0;
 	} else {
-	    if (this.framesKeyPressed == 0) {
+	    if (framesKeyPressed == 0) {
 		return 0;
 	    }
-	    if (this.framesKeyPressed < 0.2 * this.frameRate) {
-		this.framesKeyPressed = 0;
+	    if (framesKeyPressed < 0.2 * frameRate) {
+		framesKeyPressed = 0;
 		return 1;
 	    }
-	    this.framesKeyPressed = 0;
+	    framesKeyPressed = 0;
 	    return 2;
 	}
     }
@@ -164,7 +164,7 @@ public class Gui extends GuiTemplate {
      */
     @Override
     public void setup() {
-	this.frameRate(10);
+	frameRate(10);
 	this.background(0);
     }
 }

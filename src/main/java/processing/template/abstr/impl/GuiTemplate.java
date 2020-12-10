@@ -1,6 +1,7 @@
-package processing.template;
+package processing.template.abstr.impl;
 
 import processing.core.PApplet;
+import processing.template.abstr.IGuiTemplate;
 
 /**
  * @author ro

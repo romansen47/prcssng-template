@@ -1,7 +1,7 @@
 /**
  *
  */
-package processing.template;
+package processing.template.abstr;
 
 /**
  * @author ro
@@ -31,6 +31,6 @@ public interface IGuiTemplate {
     /**
      * The setup function from processing framework
      */
-    void setup();
+    void setup() ;
 
 }
